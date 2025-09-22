@@ -10,12 +10,17 @@ const colors = {
   lightTeal: '#14b8a6',
 };
 
-const BackgroundContainer = styled(Box)(({ mouseX, mouseY }) => ({
+interface BackgroundContainerProps {
+  mouseX: number;
+  mouseY: number;
+}
+
+const BackgroundContainer = styled(Box)<BackgroundContainerProps>(({ mouseX, mouseY }) => ({
   position: 'fixed',
-  top: 0,
-  left: 0,
-  width: '100vw',
-  height: '100vh',
+  top: '-2.5vh',
+  left: '-2.5vw',
+  width: '105vw',
+  height: '105vh',
   overflow: 'hidden',
   display: 'flex',
   flexDirection: 'column',
@@ -24,10 +29,6 @@ const BackgroundContainer = styled(Box)(({ mouseX, mouseY }) => ({
   background: `linear-gradient(135deg, ${colors.darkGreen} 0%, ${colors.mediumGreen} 100%)`,
   transform: `translate(${mouseX / 50}px, ${mouseY / 50}px)`,
   transition: 'transform 0.1s ease-out',
-  width: '105vw',
-  height: '105vh',
-  left: '-2.5vw',
-  top: '-2.5vh',
 }));
 
 const ContentBox = styled(Box)(({ theme }) => ({
@@ -49,7 +50,7 @@ function App() {
     const params = new URLSearchParams(window.location.search);
     setUtmSource(params.get('utm_source') || 'direct');
 
-    const handleMouseMove = (event) => {
+    const handleMouseMove = (event: MouseEvent) => {
       setMouseX(event.clientX - window.innerWidth / 2);
       setMouseY(event.clientY - window.innerHeight / 2);
     };
