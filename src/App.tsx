@@ -25,7 +25,7 @@ function App() {
     setUtmSource(params.get('utm_source') || 'direct');
   }, []);
 
-  const handleLanguageChange = (lng) => {
+  const handleLanguageChange = (lng: string) => {
     i18n.changeLanguage(lng);
   };
 
