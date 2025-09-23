@@ -1,10 +1,10 @@
 {
-  "DONABOON": "DONABOON",
+  "DONABOON": "Donaboon",
   "COMING_SOON": "COMING SOON",
   "JOIN_OUR_JOURNEY": "Join our journey!",
   "LEAVE_EMAIL_LAUNCH_NOTIFY": "Leave your email and be the first to know when we launch.",
-  "YOUR_EMAIL_ADDRESS": "Your email address...",
-  "NOTIFY_ME": "NOTIFY ME",
+  "YOUR_EMAIL_ADDRESS": "Email address...",
+  "NOTIFY_ME": "Notify Me",
   "EMAIL_REQUIRED": "Please enter your email address.",
   "EMAIL_ALREADY_SUBSCRIBED": "This email is already subscribed.",
   "EMAIL_INVALID": "Please enter a valid email address.",
