@@ -155,7 +155,7 @@ function App() {
               colorPalette='teal'
               size={{ base: 'xl', smDown: 'lg' }}
               variant='subtle'
-              bgColor='teal.600/90'
+              bgColor='teal.700/90'
               color='teal.50'
               fontSize={{ base: 'xl', smDown: 'lg' }}
               _placeholder={{ color: 'teal.100' }}
