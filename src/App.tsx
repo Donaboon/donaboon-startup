@@ -85,8 +85,8 @@ function App() {
   return (
     <VStack>
       <VStack
-        w='100vw'
-        height='100vh'
+        w='100svw'
+        height='100svh'
         display='flex'
         flexDirection='column'
         backgroundImage='url(background.jpg)'
@@ -98,7 +98,7 @@ function App() {
         <VStack
           w='100%'
           maxW='600px'
-          height='100vh'
+          height='100%'
           justifyContent='space-between'
           alignItems='left'
           pl={{ base: 5, sm: 10 }}
