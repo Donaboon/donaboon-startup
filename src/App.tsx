@@ -175,10 +175,10 @@ function App() {
                 onChange={(e) => setEmail(e.target.value)}
                 bg='#00000040'
                 h={{ base: '40px', sm: '60px' }}
-                borderRadius={{ base: '20px', sm: '30px' }}
+                borderRadius={{ base: '10px', sm: '20px' }}
                 color='white'
                 _placeholder={{ color: 'white', textAlign: 'center' }}
-                fontSize={{ base: 13, sm: 20 }}
+                fontSize={{ base: 13, sm: 21 }}
                 fontWeight={400}
                 padding='10px 14px'
                 flex='1'
@@ -192,8 +192,8 @@ function App() {
                 bg='#00000040'
                 color='white'
                 padding='12px 24px'
-                h={{ base: '30px', sm: '60px' }}
-                borderRadius='20px'
+                h={{ base: '40px', sm: '60px' }}
+                borderRadius={{ base: '10px', sm: '20px' }}
                 width='auto'
                 fontSize={{ base: 12, sm: 17 }}
                 fontWeight={100}
