@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
 import { ChakraProvider, createSystem, defaultConfig} from '@chakra-ui/react';
 import { ThemeProvider } from "next-themes"
-import './i18n';
+import './i18n.js';
 
 const system = createSystem(defaultConfig)
 
