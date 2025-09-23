@@ -10,7 +10,7 @@ Currently, two official plugins are available:
 ## Expanding the ESLint configurationtttttt
 test
 test
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+If you are developing a production applitttcation, we recommend updating the configuration to enable type-aware lint rules:
 
 ```js
 export default defineConfig([
