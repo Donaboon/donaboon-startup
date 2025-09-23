@@ -90,7 +90,7 @@ function App() {
         display='flex'
         flexDirection='column'
         backgroundImage='url(background.jpg)'
-        backgroundSize='auto 100vh'
+        backgroundSize='cover'
         alignItems='left'
         backgroundPosition='right center'
         backgroundRepeat='no-repeat'
