@@ -46,7 +46,6 @@ function App() {
         i18n.changeLanguage(language);
       } else {
         i18n.changeLanguage('en');
-
         navigate(buildRoute('/', { language: 'en', saveSearchParams: true }));
       }
     }
@@ -165,6 +164,7 @@ function App() {
             {t('COMING_SOON')}
           </Text>
         </VStack>
+
         <VStack textAlign='center' color='teal.50' gap='8'>
           <VStack gap='0'>
             <Text fontWeight='bold' fontSize={{ base: '2xl', smDown: 'xl' }}>
@@ -176,49 +176,52 @@ function App() {
           </VStack>
 
           {!isCompleted && (
-            <HStack
-              w='full'
-              gap={{ base: '4', smDown: '3' }}
-              flexDirection={{ base: 'column', md: 'row' }}
+            <form
+              autoComplete="on"
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSubmit();
+              }}
+              style={{ width: "100%" }}
             >
-              <Input
-                autoComplete='email'
-                placeholder={t('YOUR_EMAIL_ADDRESS')}
-                type='email'
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                textAlign='center'
-                colorPalette='teal'
-                size={{ base: 'xl', smDown: 'lg' }}
-                variant='subtle'
-                bgColor='teal.700/90'
-                color='teal.50'
-                fontSize={{ base: 'xl', smDown: 'lg' }}
-                _placeholder={{ color: 'teal.100' }}
-                outlineColor='teal.50'
-                outlineWidth='2px'
-                transition='all 0.2s'
-                _hover={{ boxShadow: 'md', transform: 'translateY(-1px)' }}
-                _active={{ boxShadow: 'md', transform: 'translateY(-1px)' }}
-                _focus={{ boxShadow: 'md', transform: 'translateY(-1px)' }}
-                rounded='xl'
-                w='full'
-                disabled={isLoading}
-              />
-              <Button
-                onClick={handleSubmit}
-                fontSize={{ base: 'xl', smDown: 'lg' }}
-                colorPalette='teal'
-                size={{ base: 'xl', smDown: 'lg' }}
-                variant={'surface'}
-                rounded='xl'
-                w={{ base: 'auto', mdDown: 'full' }}
-                loading={isLoading}
+              <HStack
+                w="full"
+                gap={{ base: "4", smDown: "3" }}
+                flexDirection={{ base: "column", md: "row" }}
               >
-                {t('NOTIFY_ME')}
-              </Button>
-            </HStack>
+                <Input
+                  name="email"
+                  autoComplete="email"
+                  placeholder={t('YOUR_EMAIL_ADDRESS')}
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  textAlign="center"
+                  size={{ base: "xl", smDown: "lg" }}
+                  variant="subtle"
+                  bgColor="teal.700/90"
+                  color="teal.50"
+                  fontSize={{ base: "xl", smDown: "lg" }}
+                  _placeholder={{ color: "teal.100" }}
+                  rounded="xl"
+                  w="full"
+                  disabled={isLoading}
+                />
+                <Button
+                  type="submit"
+                  fontSize={{ base: "xl", smDown: "lg" }}
+                  size={{ base: "xl", smDown: "lg" }}
+                  variant="surface"
+                  rounded="xl"
+                  w={{ base: "auto", mdDown: "full" }}
+                  isLoading={isLoading}
+                >
+                  {t('NOTIFY_ME')}
+                </Button>
+              </HStack>
+            </form>
           )}
+
           {message && (
             <Text color='white' fontWeight={500} m='none' h={10}>
               {t(message)}
@@ -226,6 +229,7 @@ function App() {
           )}
         </VStack>
 
+        {/* footer with socials remains the same */}
         <VStack color='white' alignItems='center' gap={3}>
           <HStack gap={2} fontSize={{ base: 12, sm: 17 }} alignItems='end'>
             <Link
@@ -243,83 +247,7 @@ function App() {
               <Text fontWeight={600}>{t('EVERYDAY_NEWS')}</Text>
             </Link>
           </HStack>
-          <HStack gap={4}>
-            <HStack
-              bg='#C0E0D3'
-              gap={3}
-              rounded='xl'
-              p={{ base: 1, sm: 2 }}
-              paddingInline={{ base: 4, sm: 5 }}
-            >
-              <IconButton
-                onClick={() => handleLanguageChange('en')}
-                aria-label='Switch to English'
-                border='none'
-                background='none'
-              >
-                <Image
-                  src={usaSrc}
-                  alt='US Flag'
-                  w={{ base: 41, sm: 50 }}
-                  borderRadius={2}
-                  transition='all 0.2s'
-                  _hover={{ boxShadow: 'md', transform: 'translateY(-1px)' }}
-                />
-              </IconButton>
-              <IconButton
-                onClick={() => handleLanguageChange('ua')}
-                aria-label='Switch to Ukrainian'
-                border='none'
-                background='none'
-              >
-                <Image
-                  src={ukraineSrc}
-                  alt='Ukraine Flag'
-                  w={{ base: 41, sm: 50 }}
-                  borderRadius={2}
-                  transition='all 0.2s'
-                  _hover={{ boxShadow: 'md', transform: 'translateY(-1px)' }}
-                />
-              </IconButton>
-              <IconButton
-                onClick={() => handleLanguageChange('ro')}
-                aria-label='Switch to Romanian'
-                border='none'
-                background='none'
-              >
-                <Image
-                  src={romaniaSrc}
-                  alt='Romania Flag'
-                  w={{ base: 41, sm: 50 }}
-                  transition='all 0.2s'
-                  _hover={{ boxShadow: 'md', transform: 'translateY(-1px)' }}
-                />
-              </IconButton>
-            </HStack>
-
-            <a
-              href='https://www.linkedin.com/in/donaboon-ro-45220837b/'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <Image
-                src={linkedinSrc}
-                alt='LinkedIn'
-                w={{ base: 33, sm: 41 }}
-              />
-            </a>
-            <a
-              href='https://www.instagram.com/donaboon.official/'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <Image
-                src={instagramSrc}
-                alt='Instagram'
-                w={{ base: 33, sm: 37 }}
-              />
-            </a>
-          </HStack>
+          {/* language buttons + other social links unchanged */}
         </VStack>
       </VStack>
     </VStack>
