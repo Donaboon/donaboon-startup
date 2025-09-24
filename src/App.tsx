@@ -13,6 +13,16 @@ import {
 import { useTranslation } from 'react-i18next';
 import { DonaboonLogoIcon } from './DonaboonLogo';
 import i18n from './i18n';
+import { useNavigate, useParams } from 'react-router-dom';
+import { buildRoute } from './utils/router.utils';
+
+import backgroundSrc from '/background.jpg';
+import facebookSrc from '/facebook.png';
+import instagramSrc from '/instagram.png';
+import linkedinSrc from '/linkedin.png';
+import romaniaSrc from '/romania.png';
+import ukraineSrc from '/ukraine.png';
+import usaSrc from '/usa.png';
 
 function App() {
   const { t } = useTranslation();
@@ -23,20 +33,28 @@ function App() {
   const [isCompleted, setIsCompleted] = useState<boolean>(false);
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const { language } = useParams();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     setUtmSource(params.get('utm_source') || 'direct');
 
-    let lang = params.get('lang')
-    if (lang) {
-      if (lang === 'en' || lang === 'ua' || lang === 'ro')
-        i18n.changeLanguage(lang)
+    if (language) {
+      if (['en', 'ua', 'ro'].includes(language)) {
+        i18n.changeLanguage(language);
+      } else {
+        i18n.changeLanguage('en');
+
+        navigate(buildRoute('/', { language: 'en' }));
+      }
     }
-  }, []);
+  }, [language, navigate]);
 
   const handleLanguageChange = (lng: string) => {
     i18n.changeLanguage(lng);
+    navigate(buildRoute('/', { language: lng }));
   };
 
   const handleSubmit = async () => {
@@ -59,7 +77,11 @@ function App() {
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, utmSource: utmSource, lang: i18n.language }),
+          body: JSON.stringify({
+            email,
+            utmSource: utmSource,
+            lang: i18n.language,
+          }),
         }
       );
 
@@ -100,7 +122,7 @@ function App() {
     <VStack
       w='100vw'
       height='100svh'
-      backgroundImage='url(background.jpg)'
+      backgroundImage={`url(${backgroundSrc})`}
       backgroundSize='cover'
       alignItems='left'
       backgroundPosition='right center'
@@ -213,7 +235,7 @@ function App() {
               alignItems='end'
             >
               <Image
-                src='facebook.png'
+                src={facebookSrc}
                 alt='Facebook'
                 w={{ base: 15, sm: 19 }}
               />
@@ -235,7 +257,7 @@ function App() {
                 background='none'
               >
                 <Image
-                  src='usa.png'
+                  src={usaSrc}
                   alt='US Flag'
                   w={{ base: 41, sm: 50 }}
                   borderRadius={2}
@@ -250,7 +272,7 @@ function App() {
                 background='none'
               >
                 <Image
-                  src='ukraine.png'
+                  src={ukraineSrc}
                   alt='Ukraine Flag'
                   w={{ base: 41, sm: 50 }}
                   borderRadius={2}
@@ -265,7 +287,7 @@ function App() {
                 background='none'
               >
                 <Image
-                  src='romania.png'
+                  src={romaniaSrc}
                   alt='Romania Flag'
                   w={{ base: 41, sm: 50 }}
                   transition='all 0.2s'
@@ -280,7 +302,7 @@ function App() {
               rel='noopener noreferrer'
             >
               <Image
-                src='linkedin.png'
+                src={linkedinSrc}
                 alt='LinkedIn'
                 w={{ base: 33, sm: 41 }}
               />
@@ -291,7 +313,7 @@ function App() {
               rel='noopener noreferrer'
             >
               <Image
-                src='instagram.png'
+                src={instagramSrc}
                 alt='Instagram'
                 w={{ base: 33, sm: 37 }}
               />

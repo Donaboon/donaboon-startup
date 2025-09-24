@@ -1,0 +1,14 @@
+{
+  "rewrites": [
+    { "source": "/ua", "destination": "/ua/index.html" },
+    { "source": "/ua/", "destination": "/ua/index.html" },
+    { "source": "/ua/:path*", "destination": "/ua/index.html" },
+    { "source": "/ro", "destination": "/ro/index.html" },
+    { "source": "/ro/", "destination": "/ro/index.html" },
+    { "source": "/ro/:path*", "destination": "/ro/index.html" },
+    {
+      "source": "/((?!api|ua|ro).*)",
+      "destination": "/index.html"
+    }
+  ]
+}

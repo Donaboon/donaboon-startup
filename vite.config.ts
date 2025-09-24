@@ -4,5 +4,14 @@ import svgr from 'vite-plugin-svgr';
 
 // https://vite.dev/config/
 export default defineConfig({
+  build: {
+    rollupOptions: {
+      output: {
+        entryFileNames: 'donaboon-startup.js',
+        chunkFileNames: 'chunk-[name].js',
+        assetFileNames: 'assets/[name].[ext]',
+      },
+    },
+  },
   plugins: [react(), svgr()],
 });
