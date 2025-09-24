@@ -54,7 +54,7 @@ function App() {
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, utm_source: utmSource }),
+          body: JSON.stringify({ email, utmSource: utmSource }),
         }
       );
 
@@ -157,12 +157,82 @@ function App() {
                 {t('LEAVE_EMAIL_LAUNCH_NOTIFY')}
               </Text>
             </VStack>
-
             {!isCompleted && (
               <HStack
                 w='full'
                 gap={{ base: '4', smDown: '3' }}
                 flexDirection={{ base: 'column', md: 'row' }}
+          >
+            <Input
+              placeholder={t('YOUR_EMAIL_ADDRESS')}
+              type='email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              textAlign='center'
+              colorPalette='teal'
+              size={{ base: 'xl', smDown: 'lg' }}
+              variant='subtle'
+              bgColor='teal.700/90'
+              color='teal.50'
+              fontSize={{ base: 'xl', smDown: 'lg' }}
+              _placeholder={{ color: 'teal.100' }}
+              outlineColor='teal.50'
+              outlineWidth='2px'
+              transition='all 0.2s'
+              _hover={{ boxShadow: 'md', transform: 'translateY(-1px)' }}
+              _active={{ boxShadow: 'md', transform: 'translateY(-1px)' }}
+              _focus={{ boxShadow: 'md', transform: 'translateY(-1px)' }}
+              rounded='xl'
+              w='full'
+            />
+            <Button
+              onClick={handleSubmit}
+              fontSize={{ base: 'xl', smDown: 'lg' }}
+              colorPalette='teal'
+              size={{ base: 'xl', smDown: 'lg' }}
+              variant={'surface'}
+              rounded='xl'
+              w={{ base: 'auto', mdDown: 'full' }}
+            >
+              {t('NOTIFY_ME')}
+            </Button>
+          </HStack>
+             }
+          <Text color='white' fontWeight={500} m='none' h={10}>
+            {message ?? ''}
+          </Text>
+        </VStack>
+
+        <VStack color='white' alignItems='center' gap={3}>
+          <HStack gap={2} fontSize={{ base: 12, sm: 17 }} alignItems='end'>
+            <Link
+              href='https://www.facebook.com/donaboon.official/'
+              target='_blank'
+              rel='noopener noreferrer'
+              color='white'
+              alignItems='end'
+            >
+              <Image
+                src='facebook.png'
+                alt='Facebook'
+                w={{ base: 15, sm: 19 }}
+              />
+              <Text fontWeight={600}>{t('EVERYDAY_NEWS')}</Text>
+            </Link>
+          </HStack>
+          <HStack gap={4}>
+            <HStack
+              bg='#C0E0D3'
+              gap={3}
+              rounded='xl'
+              p={{ base: 1, sm: 2 }}
+              paddingInline={{ base: 4, sm: 5 }}
+            >
+              <IconButton
+                onClick={() => handleLanguageChange('en')}
+                aria-label='Switch to English'
+                border='none'
+                background='none'
               >
                 <Input
                   placeholder={t('YOUR_EMAIL_ADDRESS')}
