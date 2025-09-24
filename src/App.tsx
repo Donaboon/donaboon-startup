@@ -47,14 +47,14 @@ function App() {
       } else {
         i18n.changeLanguage('en');
 
-        navigate(buildRoute('/', { language: 'en' }));
+        navigate(buildRoute('/', { language: 'en', saveSearchParams: true }));
       }
     }
   }, [language, navigate]);
 
   const handleLanguageChange = (lng: string) => {
     i18n.changeLanguage(lng);
-    navigate(buildRoute('/', { language: lng }));
+    navigate(buildRoute('/', { language: lng, saveSearchParams: true }));
   };
 
   const handleSubmit = async () => {
@@ -79,7 +79,7 @@ function App() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             email,
-            utmSource: utmSource,
+            utmSource,
             lang: i18n.language,
           }),
         }

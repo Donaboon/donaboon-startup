@@ -10,6 +10,10 @@ export const router = createBrowserRouter([
   },
   {
     path: '*',
-    element: <Navigate to={buildRoute('/', { language: 'en' })} />,
+    element: (
+      <Navigate
+        to={buildRoute('/', { language: 'en', saveSearchParams: true })}
+      />
+    ),
   },
 ]);
