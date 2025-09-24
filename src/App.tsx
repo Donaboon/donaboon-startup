@@ -34,7 +34,6 @@ function App() {
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const { language } = useParams();
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -71,18 +70,16 @@ function App() {
 
     try {
       setIsLoading(true);
-      const response = await fetch(
-        'https://api.donaboon.org/v1/landing/subscribe',
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            email,
-            utmSource,
-            lang: i18n.language,
-          }),
-        }
-      );
+
+      const response = await fetch('https://api.donaboon.org/v1/landing/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          utmSource,
+          lang: i18n.language,
+        }),
+      });
 
       const data = await response.json();
 
@@ -119,28 +116,29 @@ function App() {
 
   return (
     <VStack
-      w='100vw'
-      height='100svh'
+      w="100vw"
+      height="100svh"
       backgroundImage={`url(${backgroundSrc})`}
-      backgroundSize='cover'
-      alignItems='left'
-      backgroundPosition='right center'
+      backgroundSize="cover"
+      alignItems="left"
+      backgroundPosition="right center"
     >
       <VStack
-        w='full'
-        height='full'
-        maxW='xl'
-        justifyContent='space-between'
-        p='10'
-        bg='teal.700/50'
-        backdropFilter='blur(3px)'
-        boxShadow='2xl'
+        w="full"
+        height="full"
+        maxW="xl"
+        justifyContent="space-between"
+        p="10"
+        bg="teal.700/50"
+        backdropFilter="blur(3px)"
+        boxShadow="2xl"
       >
-        <VStack alignItems='center' w='full'>
-          <HStack align='center'>
+        {/* Logo and Heading */}
+        <VStack alignItems="center" w="full">
+          <HStack align="center">
             <Text
-              fontWeight='bold'
-              color='teal.50'
+              fontWeight="bold"
+              color="teal.50"
               fontSize={{ base: '6xl', smDown: '5xl' }}
               lineHeight={0.5}
             >
@@ -151,103 +149,180 @@ function App() {
               css={{
                 width: { base: '4rem', smDown: '3.5rem' },
               }}
-              stroke='white'
-              fill='teal.50'
+              stroke="white"
+              fill="teal.50"
             />
           </HStack>
           <Text
-            color='teal.50'
+            color="teal.50"
             fontSize={{ base: '2xl', smDown: 'xl' }}
             letterSpacing={1.5}
-            textAlign='start'
+            textAlign="start"
           >
             {t('COMING_SOON')}
           </Text>
         </VStack>
 
-        <VStack textAlign='center' color='teal.50' gap='8'>
-          <VStack gap='0'>
-            <Text fontWeight='bold' fontSize={{ base: '2xl', smDown: 'xl' }}>
+        {/* Subscription Section */}
+        <VStack textAlign="center" color="teal.50" gap="8">
+          <VStack gap="0">
+            <Text fontWeight="bold" fontSize={{ base: '2xl', smDown: 'xl' }}>
               {t('JOIN_OUR_JOURNEY')}
             </Text>
-            <Text fontWeight='semibold' fontSize={{ base: 'xl', smDown: 'lg' }}>
+            <Text fontWeight="semibold" fontSize={{ base: 'xl', smDown: 'lg' }}>
               {t('LEAVE_EMAIL_LAUNCH_NOTIFY')}
             </Text>
           </VStack>
 
           {!isCompleted && (
             <form
-              autoComplete="on"
-              onSubmit={(e) => {
-                e.preventDefault();
-                handleSubmit();
-              }}
-              style={{ width: "100%" }}
-            >
-              <HStack
-                w="full"
-                gap={{ base: "4", smDown: "3" }}
-                flexDirection={{ base: "column", md: "row" }}
-              >
-                <Input
-                  name="email"
-                  autoComplete="email"
-                  placeholder={t('YOUR_EMAIL_ADDRESS')}
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  textAlign="center"
-                  size={{ base: "xl", smDown: "lg" }}
-                  variant="subtle"
-                  bgColor="teal.700/90"
-                  color="teal.50"
-                  fontSize={{ base: "xl", smDown: "lg" }}
-                  _placeholder={{ color: "teal.100" }}
-                  rounded="xl"
-                  w="full"
-                  disabled={isLoading}
-                />
-                <Button
-                  type="submit"
-                  fontSize={{ base: "xl", smDown: "lg" }}
-                  size={{ base: "xl", smDown: "lg" }}
-                  variant="surface"
-                  rounded="xl"
-                  w={{ base: "auto", mdDown: "full" }}
-                  isLoading={isLoading}
-                >
-                  {t('NOTIFY_ME')}
-                </Button>
-              </HStack>
-            </form>
+  autoComplete="on"
+  onSubmit={(e) => {
+    e.preventDefault();
+    handleSubmit();
+  }}
+  style={{ width: "100%" }}
+>
+  <HStack
+    w='full'
+    gap={{ base: '4', smDown: '3' }}
+    flexDirection={{ base: 'column', md: 'row' }}
+  >
+    <Input
+      name="email"                // 👈 added
+      autoComplete="email"        // 👈 same but now inside form
+      placeholder={t('YOUR_EMAIL_ADDRESS')}
+      type='email'
+      value={email}
+      onChange={(e) => setEmail(e.target.value)}
+      textAlign='center'
+      colorPalette='teal'
+      size={{ base: 'xl', smDown: 'lg' }}
+      variant='subtle'
+      bgColor='teal.700/90'
+      color='teal.50'
+      fontSize={{ base: 'xl', smDown: 'lg' }}
+      _placeholder={{ color: 'teal.100' }}
+      outlineColor='teal.50'
+      outlineWidth='2px'
+      transition='all 0.2s'
+      _hover={{ boxShadow: 'md', transform: 'translateY(-1px)' }}
+      _active={{ boxShadow: 'md', transform: 'translateY(-1px)' }}
+      _focus={{ boxShadow: 'md', transform: 'translateY(-1px)' }}
+      rounded='xl'
+      w='full'
+      disabled={isLoading}
+    />
+    <Button
+      type="submit"               // 👈 changed to submit
+      onClick={handleSubmit}      // 👈 kept your original handler
+      fontSize={{ base: 'xl', smDown: 'lg' }}
+      colorPalette='teal'
+      size={{ base: 'xl', smDown: 'lg' }}
+      variant={'surface'}
+      rounded='xl'
+      w={{ base: 'auto', mdDown: 'full' }}
+      loading={isLoading}         // left as-is
+    >
+      {t('NOTIFY_ME')}
+    </Button>
+  </HStack>
+</form>
           )}
 
           {message && (
-            <Text color='white' fontWeight={500} m='none' h={10}>
+            <Text color="white" fontWeight={500} m="none" h={10}>
               {t(message)}
             </Text>
           )}
         </VStack>
 
-        {/* footer with socials remains the same */}
-        <VStack color='white' alignItems='center' gap={3}>
-          <HStack gap={2} fontSize={{ base: 12, sm: 17 }} alignItems='end'>
+        {/* Footer Section */}
+        <VStack color="white" alignItems="center" gap={3}>
+          <HStack gap={2} fontSize={{ base: 12, sm: 17 }} alignItems="end">
             <Link
-              href='https://www.facebook.com/donaboon.official/'
-              target='_blank'
-              rel='noopener noreferrer'
-              color='white'
-              alignItems='end'
+              href="https://www.facebook.com/donaboon.official/"
+              target="_blank"
+              rel="noopener noreferrer"
+              color="white"
+              alignItems="end"
             >
-              <Image
-                src={facebookSrc}
-                alt='Facebook'
-                w={{ base: 15, sm: 19 }}
-              />
+              <Image src={facebookSrc} alt="Facebook" w={{ base: 15, sm: 19 }} />
               <Text fontWeight={600}>{t('EVERYDAY_NEWS')}</Text>
             </Link>
           </HStack>
-          {/* language buttons + other social links unchanged */}
+
+          <HStack gap={4}>
+            {/* Language Switcher */}
+            <HStack
+              bg="#C0E0D3"
+              gap={3}
+              rounded="xl"
+              p={{ base: 1, sm: 2 }}
+              paddingInline={{ base: 4, sm: 5 }}
+            >
+              <IconButton
+                onClick={() => handleLanguageChange('en')}
+                aria-label="Switch to English"
+                border="none"
+                background="none"
+              >
+                <Image
+                  src={usaSrc}
+                  alt="US Flag"
+                  w={{ base: 41, sm: 50 }}
+                  borderRadius={2}
+                  transition="all 0.2s"
+                  _hover={{ boxShadow: 'md', transform: 'translateY(-1px)' }}
+                />
+              </IconButton>
+              <IconButton
+                onClick={() => handleLanguageChange('ua')}
+                aria-label="Switch to Ukrainian"
+                border="none"
+                background="none"
+              >
+                <Image
+                  src={ukraineSrc}
+                  alt="Ukraine Flag"
+                  w={{ base: 41, sm: 50 }}
+                  borderRadius={2}
+                  transition="all 0.2s"
+                  _hover={{ boxShadow: 'md', transform: 'translateY(-1px)' }}
+                />
+              </IconButton>
+              <IconButton
+                onClick={() => handleLanguageChange('ro')}
+                aria-label="Switch to Romanian"
+                border="none"
+                background="none"
+              >
+                <Image
+                  src={romaniaSrc}
+                  alt="Romania Flag"
+                  w={{ base: 41, sm: 50 }}
+                  transition="all 0.2s"
+                  _hover={{ boxShadow: 'md', transform: 'translateY(-1px)' }}
+                />
+              </IconButton>
+            </HStack>
+
+            {/* Social Links */}
+            <a
+              href="https://www.linkedin.com/in/donaboon-ro-45220837b/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image src={linkedinSrc} alt="LinkedIn" w={{ base: 33, sm: 41 }} />
+            </a>
+            <a
+              href="https://www.instagram.com/donaboon.official/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image src={instagramSrc} alt="Instagram" w={{ base: 33, sm: 37 }} />
+            </a>
+          </HStack>
         </VStack>
       </VStack>
     </VStack>
