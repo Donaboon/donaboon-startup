@@ -27,6 +27,12 @@ function App() {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     setUtmSource(params.get('utm_source') || 'direct');
+
+    let lang = params.get('lang')
+    if (lang) {
+      if (lang === 'en' || lang === 'ua' || lang === 'ro')
+        i18n.changeLanguage(lang)
+    }
   }, []);
 
   const handleLanguageChange = (lng: string) => {
