@@ -13,6 +13,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import { DonaboonLogoIcon } from './DonaboonLogo';
 import i18n from './i18n';
+import { useParams } from 'react-router-dom';
 
 function App() {
   const { t } = useTranslation();
@@ -23,15 +24,17 @@ function App() {
   const [isCompleted, setIsCompleted] = useState<boolean>(false);
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
+  const { language } = useParams();
+  
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     setUtmSource(params.get('utm_source') || 'direct');
 
-    let lang = params.get('lang')
-    if (lang) {
-      if (lang === 'en' || lang === 'ua' || lang === 'ro')
-        i18n.changeLanguage(lang)
+    if (language) {
+      if (language === 'en' || language === 'ua' || language === 'ro')
+        i18n.changeLanguage(language)
+      else
+        i18n.changeLanguage('en')
     }
   }, []);
 
