@@ -182,7 +182,7 @@ function App() {
               flexDirection={{ base: 'column', md: 'row' }}
             >
               <Input
-                autocomplete='email'
+                autoComplete='email'
                 placeholder={t('YOUR_EMAIL_ADDRESS')}
                 type='email'
                 value={email}
