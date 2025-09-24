@@ -49,7 +49,7 @@ function App() {
     try {
       setIsLoading(true);
       const response = await fetch(
-        'https://api.dev.donaboon.org/v1/landing/subscribe',
+        'https://api.donaboon.org/v1/landing/subscribe',
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
