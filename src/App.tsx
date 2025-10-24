@@ -309,7 +309,7 @@ function App() {
 
             {/* Social Links */}
             <a
-              href="https://www.linkedin.com/in/donaboon-ro-45220837b/"
+              href="https://www.linkedin.com/in/donaboon/"
               target="_blank"
               rel="noopener noreferrer"
             >
