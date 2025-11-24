@@ -12,5 +12,6 @@
   "SUCCESS_MESSAGE": "Vă mulțumim pentru abonare! Vă vom notifica la lansare.",
   "AN_ERROR_OCCURRED": "A apărut o eroare. Vă rugăm să încercați din nou mai târziu.",
   "EVERYDAY_NEWS": "DONABOON | ȘTIRI ZILNICE",
-  "EMAIL_FORMAT_INVALID": "Vă rugăm să introduceți un format de email valid."
+  "EMAIL_FORMAT_INVALID": "Vă rugăm să introduceți un format de email valid.",
+  "FOOTER_TEXT": "© {{currentYear}} VÂNĂTOR DE SOARE SRL. Donaboon este un produs al VÂNĂTOR DE SOARE SRL. Toate drepturile rezervate."
 }

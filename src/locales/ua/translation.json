@@ -12,5 +12,6 @@
   "SUCCESS_MESSAGE": "Дякуємо за підписку! Ми повідомимо вас про запуск.",
   "AN_ERROR_OCCURRED": "Сталася помилка. Будь ласка, спробуйте пізніше.",
   "EVERYDAY_NEWS": "DONABOON | ЩОДЕННІ НОВИНИ",
-  "EMAIL_FORMAT_INVALID": "Будь ласка, введіть дійсний формат електронної пошти."
+  "EMAIL_FORMAT_INVALID": "Будь ласка, введіть дійсний формат електронної пошти.",
+  "FOOTER_TEXT": "© {{currentYear}} VÂNĂTOR DE SOARE SRL. Donaboon є продуктом VÂNĂTOR DE SOARE SRL. Усі права захищені."
 }

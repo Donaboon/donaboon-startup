@@ -12,5 +12,6 @@
   "SUCCESS_MESSAGE": "Thank you for subscribing! We will notify you when we launch.",
   "AN_ERROR_OCCURRED": "An error occurred. Please try again later.",
   "EVERYDAY_NEWS": "DONABOON | EVERYDAY NEWS",
-  "EMAIL_FORMAT_INVALID": "Please enter a valid email format."
+  "EMAIL_FORMAT_INVALID": "Please enter a valid email format.",
+  "FOOTER_TEXT": "© {{currentYear}} VÂNĂTOR DE SOARE SRL. Donaboon is a product of VÂNĂTOR DE SOARE SRL. All rights reserved."
 }
