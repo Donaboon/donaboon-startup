@@ -14,7 +14,7 @@ import i18n from './i18n';
 import { useNavigate, useParams } from 'react-router-dom';
 import { buildRoute } from './utils/router.utils';
 
-import backgroundSrc from '/background.jpg';
+import backgroundSrc from '/background.png';
 import facebookSrc from '/facebook.png';
 import instagramSrc from '/instagram.png';
 import linkedinSrc from '/linkedin.png';
@@ -133,9 +133,10 @@ function App() {
         maxW='xl'
         justifyContent='space-between'
         p='10'
-        bg='teal.700/50'
+        bg='blackAlpha.500'
         backdropFilter='blur(3px)'
-        boxShadow='2xl'
+        pos='relative'
+        shadow='md'
       >
         {/* Logo and Heading */}
         <VStack alignItems='center' w='full'>
@@ -249,7 +250,7 @@ function App() {
           <HStack gap={4}>
             {/* Language Switcher */}
             <HStack
-              bg='#C0E0D3'
+              bg='teal.100/15'
               gap={3}
               rounded='xl'
               p={{ base: 1, sm: 2 }}
